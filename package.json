@@ -9,6 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@uiw/codemirror-extensions-langs": "^4.21.24",
+    "@uiw/codemirror-theme-vscode": "^4.21.24",
+    "@uiw/react-codemirror": "^4.21.24",
     "next": "14.0.3",
     "next-auth": "^5.0.0-beta.15",
     "react": "^18",
