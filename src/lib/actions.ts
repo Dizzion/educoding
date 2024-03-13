@@ -1,13 +1,13 @@
 'use server'
  
-import { signIn } from '@/auth'
+import { signIn } from "next-auth/react"
  
-export async function authenticate(_currentState: unknown, formData: FormData) {
+export async function authenticate(_currentState: unknown, formData: any) {
   try {
     await signIn('credentials', formData)
   } catch (error) {
     if (error) {
-      switch (error.type) {
+      switch (error) {
         case 'CredentialsSignin':
           return 'Invalid credentials.'
         default:
