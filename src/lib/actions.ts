@@ -3,7 +3,7 @@ import PocketBase from 'pocketbase';
 
 const pb = new PocketBase('https://pocketbase.io');
  
-export async function authenticate(_currentState: unknown, formData: {email: string, password: string}) {
+export async function authenticate(_currentState: unknown, formData: any) {
   try {
     await pb.collection('users').authWithPassword(formData.email, formData.password);
     sessionStorage.setItem('authToken', pb.authStore.token);
