@@ -9,11 +9,30 @@ import {
     PopoverButton,
     PopoverGroup,
     PopoverPanel,
-  } from '@headlessui/react'
-  import {
+} from '@headlessui/react'
+import {
+    ArrowsRightLeftIcon,
     Bars3Icon,
-    ChevronDoubleDownIcon
-  } from '@heroicons/react/24/outline'
+    ChevronDoubleDownIcon,
+    CircleStackIcon,
+    ClipboardDocumentIcon,
+    CodeBracketIcon,
+    CodeBracketSquareIcon,
+    CubeIcon,
+    Square3Stack3DIcon,
+    SquaresPlusIcon
+} from '@heroicons/react/24/outline';
+
+const modules = [
+    {name: 'Algorithms', description: 'Learn Efficency through algorithms!', href: '/Dashboard/Algorithms', icon: CodeBracketIcon},
+    {name: 'Data Structures', description: 'Learn how to structure your data!', href: '/Dashboard/DataStructures', icon: CodeBracketSquareIcon},
+    {name: 'Data Types', description: 'Learn the many types of data!', href: '/Dashboard/DataTypes', icon: CircleStackIcon},
+    {name: 'Functional Programming', description: 'Learn recursion through functional programming!', href: '/Dashboard/FP', icon: Square3Stack3DIcon},
+    {name: 'Functions', description: 'Learn what it means to create a function!', href: '/Dashboard/Functions', icon: SquaresPlusIcon},
+    {name: 'InNOut', description: 'Learn how to utilize Inputs and Outputs!', href: '/Dashboard/InNOut', icon: ArrowsRightLeftIcon},
+    {name: 'Object Oriented Programming', description: 'Learn all the properties that make up Object Oriented Programing!', href: '/Dashboard/OOP', icon: CubeIcon},
+    {name: 'Variables', description: 'Work with variable and the different variable types!', href: '/Dashboard/Variables', icon: ClipboardDocumentIcon}
+]
 
 export default function Header () {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
