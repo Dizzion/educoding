@@ -14,6 +14,7 @@ import {
   ArrowsRightLeftIcon,
   Bars3Icon,
   ChevronDoubleDownIcon,
+  ChevronDownIcon,
   CircleStackIcon,
   ClipboardDocumentIcon,
   CodeBracketIcon,
@@ -178,7 +179,39 @@ export default function Header() {
                 <span className="sr-only">Edu Coding</span>
                 <img alt="" src="" className="h-8 w-auto" />
               </a>
-              <button><span><XMarkIcon aria-hidden="true"/></span></button>
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(false)}
+                className="-m-2.5 rounded-md p-2.5 text-grey-700"
+              >
+                <span>
+                  <XMarkIcon aria-hidden="true" />
+                </span>
+              </button>
+            </div>
+            <div className="mt-6 flow-root">
+                <div className="-my-6 divide-y divide-grey-500/10">
+                    <div className="space-y-2 py-6">
+                        <Disclosure as="div" className="-mx-3">
+                            <DisclosureButton className="group flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                Modules
+                                <ChevronDownIcon aria-hidden="true" className="h-5 w-5 flex-none group-data-[open]:rotate-180" />
+                            </DisclosureButton>
+                            <DisclosurePanel className="mt-2 space-y-2">
+                                {modules.map((item) => (
+                                    <DisclosureButton key={item.name} as="a" href={item.href} className="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                                        {item.name}
+                                    </DisclosureButton>
+                                ))}
+                            </DisclosurePanel>
+                        </Disclosure>
+                        <a href="/Dashboard" className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Dashboard</a>
+                    </div>
+                    <div className="py-6">
+                        <a href="/Login" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Login</a>
+                        <a href="/Signup" className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Signup</a>
+                    </div>
+                </div>
             </div>
           </DialogPanel>
         </div>
