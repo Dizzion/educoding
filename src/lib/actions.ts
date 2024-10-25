@@ -1,5 +1,4 @@
 'use server'
-import { useRouter } from 'next/navigation';
 import PocketBase from 'pocketbase';
 
 const pb = new PocketBase('https://pocketbase.io');
@@ -24,7 +23,6 @@ export async function authenticate(_currentState: unknown, formData: any) {
 export async function createUser(_currentState:unknown, formData: any) {
   try {
     await pb.collection('users').create({email: formData.email, password: formData.password, passwordConfirm: formData.passwordValidation});
-    useRouter().push('/Login');
   } catch (error) {
     if (error) {
       switch (error) {
