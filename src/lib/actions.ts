@@ -1,10 +1,12 @@
 'use server'
+import PocketBase from 'pocketbase';
+
+const pb = new PocketBase('https://pocketbase.io');
  
-import { signIn } from "next-auth/react"
- 
-export async function authenticate(_currentState: unknown, formData: any) {
+export async function authenticate(_currentState: unknown, formData: {email: string, password: string}) {
   try {
-    await signIn('credentials', formData)
+    await pb.collection('users').authWithPassword(formData.email, formData.password);
+    sessionStorage.setItem('authToken', pb.authStore.token);
   } catch (error) {
     if (error) {
       switch (error) {
@@ -17,3 +19,4 @@ export async function authenticate(_currentState: unknown, formData: any) {
     throw error
   }
 }
+
