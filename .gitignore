@@ -15,6 +15,7 @@
 
 # production
 /build
+/db/pb_data
 
 # misc
 .DS_Store
