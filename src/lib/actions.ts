@@ -1,7 +1,7 @@
 "use server";
 import PocketBase from "pocketbase";
 
-const pb = new PocketBase("https://127.0.0.0");
+const pb = new PocketBase("http://127.0.0.0:8090");
 
 export async function authenticate(_currentState: unknown, formData: any) {
   try {
