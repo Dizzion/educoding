@@ -1,37 +1,35 @@
-'use server'
-import PocketBase from 'pocketbase';
+"use server";
+import PocketBase from "pocketbase";
 
-const pb = new PocketBase('https://pocketbase.io');
- 
+const pb = new PocketBase("https://127.0.0.0");
+
 export async function authenticate(_currentState: unknown, formData: any) {
   try {
-    await pb.collection('users').authWithPassword(formData.email, formData.password);
-    sessionStorage.setItem('authToken', pb.authStore.token);
+    await pb
+      .collection("users")
+      .authWithPassword(formData.email, formData.password);
+    sessionStorage.setItem("authToken", pb.authStore.token);
+    return true;
   } catch (error) {
     if (error) {
-      switch (error) {
-        case 'CredentialsSignin':
-          return 'Invalid credentials.'
-        default:
-          return 'Something went wrong.'
-      }
+      return false;
     }
-    throw error
+    throw error;
   }
 }
 
-export async function createUser(_currentState:unknown, formData: any) {
+export async function createUser(_currentState: unknown, formData: any) {
   try {
-    await pb.collection('users').create({email: formData.email, password: formData.password, passwordConfirm: formData.passwordValidation});
+    await pb.collection("users").create({
+      email: formData.email,
+      password: formData.password,
+      passwordConfirm: formData.passwordValidation,
+    });
+    return true;
   } catch (error) {
     if (error) {
-      switch (error) {
-        case 'Confirmation Password Error':
-          return 'Invalid credentials.'
-        default:
-          return 'Something went wrong.'
-      }
+      return false;
     }
-    throw error
+    throw error;
   }
 }
