@@ -19,8 +19,7 @@ export default function Signup() {
       return;
     }
     setError(false);
-    console.log(user);
-    console.log(await createUser(user));
+    await createUser(user);
     setUser({ email: "", password: "", passwordConfirm: "" });
     router.push("/Login");
   };

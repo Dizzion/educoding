@@ -30,7 +30,6 @@ export async function createUser(formData: any) {
     });
   } catch (error) {
     if (error) {
-      console.log(error);
       return 'Failed to create User.';
     }
     throw error;
