@@ -1,54 +1,75 @@
 "use client";
-import { useFormState, useFormStatus } from "react-dom";
 import { createUser } from "../../lib/actions";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Signup() {
-  const [errorMessage, dispatch] = useFormState(createUser, undefined);
-  const [validation, setValidation] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+    passwordConfirm: "",
+  });
+  const [error, setError] = useState(false);
+  const router = useRouter();
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if(user.password != user.passwordConfirm) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    console.log(user);
+    console.log(await createUser(user));
+    setUser({ email: "", password: "", passwordConfirm: "" });
+    router.push("/Login");
+  };
 
   return (
-    <form action={dispatch}>
-      <input type="email" name="email" placeholder="Email" required />
+    <form onSubmit={handleSubmit}>
       <input
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        type="email"
+        value={user.email}
+        onChange={(e) =>
+          setUser({
+            email: e.target.value,
+            password: user.password,
+            passwordConfirm: user.passwordConfirm,
+          })
+        }
+        name="email"
+        placeholder="Email"
+        required
+      />
+      <input
+        value={user.password}
+        onChange={(e) =>
+          setUser({
+            email: user.email,
+            password: e.target.value,
+            passwordConfirm: user.passwordConfirm,
+          })
+        }
         type="password"
         name="password"
         placeholder="Password"
         required
       />
       <input
-        value={validation}
-        onChange={(e) => setValidation(e.target.value)}
-        type="passwordValidation"
+        value={user.passwordConfirm}
+        onChange={(e) =>
+          setUser({
+            email: user.email,
+            password: user.password,
+            passwordConfirm: e.target.value,
+          })
+        }
+        type="password"
         name="passwordValidation"
         placeholder="Confirm Password"
         required
       />
-      <div>
-        {errorMessage ? (
-          <img
-            onLoad={() => useRouter().push("/Login")}
-            alt="Redirecting to Login"
-          />
-        ) : (
-          <p>Error getting signed up.</p>
-        )}
-      </div>
-      <SignupButton />
+      <button type="submit">Sign Up</button>
     </form>
-  );
-}
-
-function SignupButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button aria-disabled={pending} type="submit">
-      Sign Up
-    </button>
   );
 }
