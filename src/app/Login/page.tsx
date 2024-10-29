@@ -18,6 +18,8 @@ export default function Login() {
       setError(true);
       return;
     }
+    sessionStorage.setItem('token', res.token);
+    sessionStorage.setItem('user_id', res.record.id);
     setUser({
       email: "",
       password: "",

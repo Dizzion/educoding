@@ -5,13 +5,10 @@ const pb = new PocketBase("http://127.0.0.1:8090");
 
 export async function authenticate(formData: any) {
   try {
-    console.log(await pb
+    const res = await pb
       .collection("users")
-      .authWithPassword(formData.email, formData.password));
-    sessionStorage.setItem("authToken", pb.authStore.token);
-    if(pb.authStore.model) {
-      sessionStorage.setItem("user_id", pb.authStore.model.id);
-    }
+      .authWithPassword(formData.email, formData.password);
+    return res;
   } catch (error) {
     if (error) {
       console.log(error);
