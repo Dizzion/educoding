@@ -1,33 +1,52 @@
 "use client";
-import { useFormState, useFormStatus } from "react-dom";
+import { useState } from "react";
 import { authenticate } from "../../lib/actions";
 import { useRouter } from "next/navigation";
 
 export default function Login() {
-  const [errorMessage, dispatch] = useFormState(authenticate, undefined);
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState(false);
+  const router = useRouter();
 
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const res = await authenticate(user);
+    if (res === "Failed to validate credentials") {
+      setError(true);
+      return;
+    }
+    setUser({
+      email: "",
+      password: "",
+    });
+    router.push("/");
+  };
   return (
-    <form action={dispatch}>
-      <input type="email" name="email" placeholder="Email" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <div>
-        {errorMessage ? (
-          <img onLoad={() => useRouter().push("/")} alt="Redirecting" />
-        ) : (
-          <p>Error getting logged in.</p>
-        )}
-      </div>
-      <LoginButton />
+    <form onSubmit={handleSubmit}>
+      <input
+        type="email"
+        name="email"
+        value={user.email}
+        onChange={(e) =>
+          setUser({ email: e.target.value, password: user.password })
+        }
+        placeholder="Email"
+        required
+      />
+      <input
+        type="password"
+        name="password"
+        value={user.password}
+        onChange={(e) =>
+          setUser({ email: user.email, password: e.target.value })
+        }
+        placeholder="Password"
+        required
+      />
+      <button type="submit">Login</button>
     </form>
-  );
-}
-
-function LoginButton() {
-  const { pending } = useFormStatus();
-
-  return (
-    <button aria-disabled={pending} type="submit">
-      Login
-    </button>
   );
 }
