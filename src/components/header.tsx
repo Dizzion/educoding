@@ -85,7 +85,7 @@ export default function Header() {
     <header className="bg-white">
       <nav
         aria-label="Global"
-        className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-7xl items-left justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
           <a href="/" className="-m-1.5 p-1.5">
@@ -156,15 +156,15 @@ export default function Header() {
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             href="/Login"
-            className="text-sm font-semibold leading-6 text-grey-900"
+            className="text-sm font-semibold leading-2 text-grey-900 px-4"
           >
-            Login<span aria-hidden="true">&rarr;</span>
+            Login
           </a>
           <a
             href="/Signup"
-            className="text-sm font-semibold leading-4 text-grey-900"
+            className="text-sm font-semibold leading-2 text-grey-900 px-4"
           >
-            Signup<span aria-hidden="true">&rarr;</span>
+            Signup
           </a>
         </div>
       </nav>
