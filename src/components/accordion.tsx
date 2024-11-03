@@ -14,7 +14,7 @@ export default function Accordion({
   title,
   id,
   active = false,
-}: AccordionpProps) {
+}: Readonly<AccordionpProps>) {
   const [accordionOpen, setAccordionOpen] = useState<boolean>(active);
 
   return (
