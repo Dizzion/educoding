@@ -16,7 +16,7 @@
     "@uiw/react-codemirror": "^4.21.24",
     "aos": "^3.0.0-beta.6",
     "educoding": "file:",
-    "next": "^14.2.15",
+    "next": "^15.0.2",
     "next-auth": "^5.0.0-beta.15",
     "pocketbase": "^0.21.5",
     "react": "^18",
