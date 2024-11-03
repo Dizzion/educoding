@@ -91,7 +91,7 @@ export default function Header() {
           <a href="/" className="-m-1.5 p-1.5">
             <span className="sr-only">Edu Coding</span>
             <img
-              src="/codesandbox-logo.svg"
+              src="/images/codesandbox-logo.svg"
               alt=""
               className="h-8 w-auto"
             />
