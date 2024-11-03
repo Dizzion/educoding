@@ -14,6 +14,7 @@
     "@uiw/codemirror-extensions-langs": "^4.21.24",
     "@uiw/codemirror-theme-vscode": "^4.21.24",
     "@uiw/react-codemirror": "^4.21.24",
+    "aos": "^3.0.0-beta.6",
     "educoding": "file:",
     "next": "^14.2.15",
     "next-auth": "^5.0.0-beta.15",
@@ -23,6 +24,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
+    "@types/aos": "^3.0.7",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
