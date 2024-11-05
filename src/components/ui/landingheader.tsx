@@ -15,7 +15,7 @@ export default function LandingHeader() {
           <ul className="flex flex-1 items-center justify-end gap-3">
             <li>
               <Link
-                href="/signin"
+                href="/Login"
                 className="btn-sm bg-white text-gray-800 shadow hover:bg-gray-50"
               >
                 Login
@@ -23,7 +23,7 @@ export default function LandingHeader() {
             </li>
             <li>
               <Link
-                href="/signup"
+                href="/Signup"
                 className="btn-sm bg-gray-800 text-gray-200 shadow hover:bg-gray-900"
               >
                 Register
