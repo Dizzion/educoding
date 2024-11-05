@@ -25,6 +25,7 @@ import {
   SquaresPlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const modules = [
   {
@@ -88,14 +89,14 @@ export default function Header() {
         className="mx-auto flex max-w-7xl items-left justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <a href="/" className="-m-1.5 p-1.5">
+          <Link href="/Dashboard" className="-m-1.5 p-1.5">
             <span className="sr-only">Edu Coding</span>
             <img
               src="/images/codesandbox-logo.svg"
               alt=""
               className="h-8 w-auto"
             />
-          </a>
+          </Link>
         </div>
         <div className="flex lg:hidden">
           <button
@@ -132,13 +133,13 @@ export default function Header() {
                       />
                     </div>
                     <div className="flex-auto">
-                      <a
+                      <Link
                         href="item.href"
                         className="block font-semibold text-grey-900"
                       >
                         {item.name}
                         <span className="absolute inset-0" />
-                      </a>
+                      </Link>
                       <p className="mt-1 text-grey-600">{item.description}</p>
                     </div>
                   </div>
@@ -146,26 +147,20 @@ export default function Header() {
               </div>
             </PopoverPanel>
           </Popover>
-          <a
-            href="/Dashboard"
-            className="text-sm font-semibold leading-6 text-grey-900"
-          >
-            Dashboard
-          </a>
         </PopoverGroup>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <a
+          <Link
             href="/Login"
             className="text-sm font-semibold leading-2 text-grey-900 px-4"
           >
             Login
-          </a>
-          <a
+          </Link>
+          <Link
             href="/Signup"
             className="text-sm font-semibold leading-2 text-grey-900 px-4"
           >
             Signup
-          </a>
+          </Link>
         </div>
       </nav>
       <Dialog
@@ -176,10 +171,10 @@ export default function Header() {
         <div className="fixed inset-0 z-10">
           <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-grey-900/10">
             <div className="flex items-center justify-between">
-              <a href="/" className="-m-1.5 p-1.5">
+              <Link href="/Dashboard" className="-m-1.5 p-1.5">
                 <span className="sr-only">Edu Coding</span>
                 <img alt="" src="" className="h-8 w-auto" />
-              </a>
+              </Link>
               <button
                 type="button"
                 onClick={() => setMobileMenuOpen(false)}
@@ -214,26 +209,20 @@ export default function Header() {
                       ))}
                     </DisclosurePanel>
                   </Disclosure>
-                  <a
-                    href="/Dashboard"
-                    className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
-                  >
-                    Dashboard
-                  </a>
                 </div>
                 <div className="py-6">
-                  <a
+                  <Link
                     href="/Login"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Login
-                  </a>
-                  <a
+                  </Link>
+                  <Link
                     href="/Signup"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Signup
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>
